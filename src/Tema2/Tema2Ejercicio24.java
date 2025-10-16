@@ -12,7 +12,7 @@ public class Tema2Ejercicio24 {
         System.out.println("Introduce una nota");
         if (nota == fin){
         while (nota <0 && nota >10) {
-            if nota <
+            if (nota <)
         }
 
     }
