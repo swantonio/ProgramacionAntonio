@@ -1,4 +1,5 @@
-import java.util.Objects;
+package Tema2;
+
 import java.util.Scanner;
 
 public class Tema2Ejercicio30 {
