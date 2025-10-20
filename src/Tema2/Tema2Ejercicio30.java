@@ -7,16 +7,19 @@ public class Tema2Ejercicio30 {
         double primernumero = 0;
         double segundonumero = 0;
         double resultado = 0;
-        String operador ;
+        boolean continuar = true; // Controla el bucle
+        String operador = "";
+
 
         Scanner in = new Scanner(System.in);
 
-    while (true) {
+    while (continuar) {
 
         System.out.println("Introduce el primer numero, pon fin para salir" );
         String entrada = in.next();
         if (entrada.equalsIgnoreCase("fin")) {
             System.out.println("Fin de programa");
+            continuar = false;
             break;
         }
         primernumero = Double.parseDouble(entrada);
