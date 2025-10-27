@@ -106,39 +106,40 @@ public class Practica1 {
             }
         }
 
-        System.out.println("RONDA " + ronda);
-        while (restovida1 > 0 && restovida2 > 0) {
+        while (restovida1 > 0 || restovida2 > 0) {
             System.out.println("RONDA " + ronda);
             ronda++;
             if (velocidad1 < velocidad2) {
                 Random ataquerandom = new Random();
                 danoturno = (ataque1 - defensa2) + ataquerandom.nextInt(10) + 1;
-                System.out.println("Jugador 1 ataca");
                 restovida2 -= danoturno;
-                System.out.println("La vida restante del jugador 2 es: " + Math.max(restovida2, 0));
+                System.out.println("Jugador 1 ataca, daño hecho a jugador 2 = " + danoturno + " de " + restovida2);
                 danoturno = ataque2 - defensa1 + ataquerandom.nextInt(10) + 1;
-                System.out.println("Jugador 2 ataca");
                 restovida1 -= danoturno;
-                System.out.println("La vida restante del jugador 1 es: " + Math.max(restovida1, 0));
+                System.out.println("Jugador 2 ataca, daño hecho a jugador 1 = " + danoturno + " de " + restovida1);
             } else {
                 Random ataquerandom = new Random();
                 danoturno = (ataque2 - defensa1) + ataquerandom.nextInt(10) + 1;
-                System.out.println("Jugador 2 ataca");
                 restovida1 -= danoturno;
-                System.out.println("La vida restante del jugador 1 es : " + Math.max(restovida1, 0));
+                System.out.println("Jugador 2 ataca, daño hecho a jugador 1 = " + danoturno + " de " + restovida1);
                 danoturno = (ataque1 - defensa1) + ataquerandom.nextInt(10) + 1;
-                System.out.println("Jugador 1 ataca");
                 restovida2 -= danoturno;
-                System.out.println("La vida restante del jugador 2 es: " + Math.max(restovida2, 0));
+                System.out.println("Jugador 1 ataca, daño hecho a jugador 2 = " + danoturno + " de " + restovida2);
             }
+            int barra1 = Math.max(restovida1, 0) * 20 / 200;
+            int barra2 = Math.max(restovida2, 0) * 20 / 200;
+            String vidaGrafica1 = "█".repeat(barra1) + "-".repeat(20 - barra1);
+            String vidaGrafica2 = "█".repeat(barra2) + "-".repeat(20 - barra2);
+            System.out.println("Jugador 1: " + Math.max(restovida1,0) + " "+ vidaGrafica1);
+            System.out.println("Jugador 2: " + Math.max(restovida2,0) + " "+ vidaGrafica2);
         }
-        if (restovida1 <= 0 && restovida2 <= 0) {
-            System.out.println("¡Empate!");
-        } else if (restovida1 <= 0) {
-            System.out.println("🏆 ¡Jugador 2 gana!");
+
+
+        if (restovida1 <= 0) {
+            System.out.println("🏆 ¡Jugador 1 gana!");
         } else {
             System.out.println("🏆 ¡Jugador 1 gana!");
         }
-        }
+    }
     }
 

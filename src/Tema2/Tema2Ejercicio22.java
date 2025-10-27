@@ -10,15 +10,16 @@ public class Tema2Ejercicio22 {
         Scanner in = new Scanner(System.in);
         System.out.println("Indica el numero");
         num = in.nextDouble();
-        resto = num;
+        //resto = num;
 
         while (num % 1 != 0) {
             System.out.println("Error introduce un numero entero");
             num = in.nextDouble();
-            resto = num;
+            //resto = num;
         }
 
-        int restoentero = (int) resto;
+        //int restoentero = (int) resto;
+        int restoentero = (int)num;
         int numeroentero = (int) num;
 
         while (restoentero > 0) {

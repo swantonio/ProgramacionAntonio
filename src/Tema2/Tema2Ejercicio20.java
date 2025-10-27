@@ -14,7 +14,7 @@ public class Tema2Ejercicio20 {
 
         System.out.println("Indica el numero de B");
         numeroB = in.nextInt();
-
+cont=numeroA;
         do {
             if (cont % 2 != 0) {
                 System.out.println(cont);

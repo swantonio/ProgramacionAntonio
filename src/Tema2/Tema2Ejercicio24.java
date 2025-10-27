@@ -14,10 +14,10 @@ public class Tema2Ejercicio24 {
             if (nota < 0 || nota > 10) {
                 System.out.println("Error introduce una nota valida ");
             } else {
-                if (nota <= 4.9) {
-                    suspendidos++;
-                } else {
+                if (nota >= 5) {
                     aprobados++;
+                } else {
+                    suspendidos++;
                 }
             }
             System.out.println("Introduce otra nota");
