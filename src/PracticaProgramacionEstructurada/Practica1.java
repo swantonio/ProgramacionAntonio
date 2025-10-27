@@ -95,7 +95,7 @@ public class Practica1 {
             System.out.println("El segundo jugador es mas rapido, atacara primero");
         } else if (velocidad1 == velocidad2) {
             System.out.println("Los dos jugadores tienen la misma velocidad se lanza moneda");
-            Random velocidadrandom = new  Random();
+            Random velocidadrandom = new Random();
             int moneda = velocidadrandom.nextInt(2);
             if (moneda == 0) {
                 velocidad1++;
@@ -106,40 +106,73 @@ public class Practica1 {
             }
         }
 
-        while (restovida1 > 0 || restovida2 > 0) {
-            System.out.println("RONDA " + ronda);
+        Random ataquerandom = new Random();
+        int probcritico = 20;
+        while (restovida1 > 0 && restovida2 > 0) {
+            System.out.println("\nRONDA " + ronda);
             ronda++;
-            if (velocidad1 < velocidad2) {
-                Random ataquerandom = new Random();
-                danoturno = (ataque1 - defensa2) + ataquerandom.nextInt(10) + 1;
-                restovida2 -= danoturno;
-                System.out.println("Jugador 1 ataca, daño hecho a jugador 2 = " + danoturno + " de " + restovida2);
-                danoturno = ataque2 - defensa1 + ataquerandom.nextInt(10) + 1;
-                restovida1 -= danoturno;
-                System.out.println("Jugador 2 ataca, daño hecho a jugador 1 = " + danoturno + " de " + restovida1);
+
+            if (velocidad1 > velocidad2) {
+                danoturno = Math.max(1, (ataque1 - defensa2) + ataquerandom.nextInt(10) + 1);
+                int dadoCritico = ataquerandom.nextInt(100) + 1;
+                if (dadoCritico <= probcritico) {
+                    System.out.println("CRITICO!!! Jugador 1 hace daño X2");
+                    danoturno *= 2;
+                }
+                System.out.println("Jugador 1 ataca, daño hecho a jugador 2 = " + danoturno);
+                restovida2 = Math.max(0, restovida2 - danoturno);
+
+                if (restovida2 > 0) {
+                    danoturno = Math.max(1, (ataque2 - defensa1) + ataquerandom.nextInt(10) + 1);
+                    dadoCritico = ataquerandom.nextInt(100) + 1;
+                    if (dadoCritico <= probcritico) {
+                        System.out.println("CRITICO!!! Jugador 2 hace daño X2");
+                        danoturno *= 2;
+                    }
+                    System.out.println("Jugador 2 ataca, daño hecho a jugador 1 = " + danoturno);
+                    restovida1 = Math.max(0, restovida1 - danoturno);
+                }
+
             } else {
-                Random ataquerandom = new Random();
-                danoturno = (ataque2 - defensa1) + ataquerandom.nextInt(10) + 1;
-                restovida1 -= danoturno;
-                System.out.println("Jugador 2 ataca, daño hecho a jugador 1 = " + danoturno + " de " + restovida1);
-                danoturno = (ataque1 - defensa1) + ataquerandom.nextInt(10) + 1;
-                restovida2 -= danoturno;
-                System.out.println("Jugador 1 ataca, daño hecho a jugador 2 = " + danoturno + " de " + restovida2);
+                danoturno = Math.max(1, (ataque2 - defensa1) + ataquerandom.nextInt(10) + 1);
+                int dadoCritico = ataquerandom.nextInt(100) + 1;
+                if (dadoCritico <= probcritico) {
+                    System.out.println("CRITICO!!! Jugador 2 hace daño X2");
+                    danoturno *= 2;
+                }
+                System.out.println("Jugador 2 ataca, daño hecho a jugador 1 = " + danoturno);
+                restovida1 = Math.max(0, restovida1 - danoturno);
+
+                if (restovida1 > 0) {
+                    danoturno = Math.max(1, (ataque1 - defensa2) + ataquerandom.nextInt(10) + 1);
+                    dadoCritico = ataquerandom.nextInt(100) + 1;
+                    if (dadoCritico <= probcritico) {
+                        System.out.println("CRITICO!!! Jugador 1 hace daño X2");
+                        danoturno *= 2;
+                    }
+                    System.out.println("Jugador 1 ataca, daño hecho a jugador 2 = " + danoturno);
+                    restovida2 = Math.max(0, restovida2 - danoturno);
+                }
             }
-            int barra1 = Math.max(restovida1, 0) * 20 / 200;
-            int barra2 = Math.max(restovida2, 0) * 20 / 200;
+
+
+            int barra1 = restovida1 * 20 / 200;
+            int barra2 = restovida2 * 20 / 200;
             String vidaGrafica1 = "█".repeat(barra1) + "-".repeat(20 - barra1);
             String vidaGrafica2 = "█".repeat(barra2) + "-".repeat(20 - barra2);
-            System.out.println("Jugador 1: " + Math.max(restovida1,0) + " "+ vidaGrafica1);
-            System.out.println("Jugador 2: " + Math.max(restovida2,0) + " "+ vidaGrafica2);
+            System.out.println("Jugador 1: " + restovida1 + " " + vidaGrafica1);
+            System.out.println("Jugador 2: " + restovida2 + " " + vidaGrafica2);
         }
 
 
+        System.out.println("\n==========================");
+        System.out.println("🏁  COMBATE FINALIZADO");
+        System.out.println("==========================");
         if (restovida1 <= 0) {
-            System.out.println("🏆 ¡Jugador 1 gana!");
+            System.out.println("🏆 ¡Jugador 2 gana!");
         } else {
             System.out.println("🏆 ¡Jugador 1 gana!");
         }
     }
-    }
+}
 
