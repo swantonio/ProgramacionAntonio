@@ -177,11 +177,13 @@ public class Practica1 {
             }
         }
 
+        System.out.println("Se comprueba quien es mas rapido para ver quien ataca primero");
+        System.out.println(nombre1 + " tiene velocidad " + velocidad1 + ", " + nombre2 + " tiene velocidad " + velocidad2);
 
         if (velocidad1 > velocidad2) {
-            System.out.println(nombre1 + "es mas rapido, atacara primero");
+            System.out.println(nombre1 + " es mas rapido, atacara primero");
         } else if (velocidad1 < velocidad2) {
-            System.out.println(nombre2 + "es mas rapido, atacara primero");
+            System.out.println(nombre2 + " es mas rapido, atacara primero");
         }
         if (velocidad1 == velocidad2) {
             System.out.println("Los dos jugadores tienen la misma velocidad se lanza moneda");
@@ -189,10 +191,10 @@ public class Practica1 {
             int moneda = velocidadrandom.nextInt(2);
             if (moneda == 0) {
                 velocidad1++;
-                System.out.println("Ha salido cara empieza" + nombre1);
+                System.out.println("Ha salido cara empieza " + nombre1);
             } else {
                 velocidad2++;
-                System.out.println("Ha salido cruz empieza" + nombre2);
+                System.out.println("Ha salido cruz empieza " + nombre2);
             }
         }
 
