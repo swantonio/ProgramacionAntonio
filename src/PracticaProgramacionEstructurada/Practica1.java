@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Practica1 {
     public static void main(String[] args) {
+        //Declaracion de variables
         int velocidad1 = 0, velocidad2 = 0;
         int ataque1 = 0,  ataque2 = 0;
         int defensa1 = 0 , defensa2 = 0;
@@ -15,10 +16,11 @@ public class Practica1 {
         int probcritico = 20;
         int predeterminado1, predeterminado2;
         int maxDanio1, maxDanio2 ;
+        int opcion1, opcion2;
         String nombre1;
         String nombre2;
         Scanner in = new Scanner(System.in);
-
+        //Seleccion de jugadores, personajes, atributos etc
         System.out.println("\nEres el jugador 1, indica tu nombre y elige tu personaje:");
         System.out.println("Nombre :");
         nombre1 = in.next();
@@ -176,7 +178,7 @@ public class Practica1 {
                 break;
             }
         }
-
+        //Comprobacion de quien es mas rapido para ver quien ataca primero o quien se cura
         System.out.println("Se comprueba quien es mas rapido para ver quien ataca primero");
         System.out.println(nombre1 + " tiene velocidad " + velocidad1 + ", " + nombre2 + " tiene velocidad " + velocidad2);
 
@@ -206,70 +208,159 @@ public class Practica1 {
             ronda++;
 
             if (velocidad1 > velocidad2) {
-                // Ataque jugador 1
-                maxDanio1 = Math.max(1, ataque1 - defensa2);
-                danoturno = ataquerandom.nextInt(maxDanio1) + 1; // daño entre 1 y (ataque-defensa)
-                int dadoCritico = ataquerandom.nextInt(100) + 1;
-                if (dadoCritico <= probcritico) {
-                    System.out.println("CRITICO!!! " + nombre1 + " hace daño X2");
-                    danoturno *= 2;
-                }
-                System.out.println(nombre1 + " ataca, daño hecho a " + nombre2 + " = " + danoturno);
-                puntosdevida2 = Math.max(0, puntosdevida2 - danoturno);
+                System.out.println("Introduce 1 si quieres atacar y 2 si quieres curarte");
+                opcion1 = in.nextInt();
 
-                // Ataque jugador 2 solo si sigue vivo
-                if (puntosdevida2 > 0) {
-                    maxDanio2 = Math.max(1, ataque2 - defensa1);
-                    danoturno = ataquerandom.nextInt(maxDanio2) + 1;
-                    dadoCritico = ataquerandom.nextInt(100) + 1;
-                    if (dadoCritico <= probcritico) {
-                        System.out.println("CRITICO!!! " + nombre2 + " hace daño X2");
-                        danoturno *= 2;
+                switch (opcion1) {
+                    case 1: {
+                        // Ataque jugador 1
+                        int defensaReducida = (int)(defensa2 * 0.5); // Defensa al 50%
+                        maxDanio1 = Math.max(1, ataque1 - defensaReducida);
+                        danoturno = ataquerandom.nextInt(maxDanio1) + 1;
+
+                        int dadoCritico = ataquerandom.nextInt(100) + 1;
+                        if (dadoCritico <= probcritico) {
+                            System.out.println("CRITICO!!! " + nombre1 + " hace daño X2");
+                            danoturno *= 2;
+                        }
+
+                        System.out.println(nombre1 + " ataca, daño hecho a " + nombre2 + " = " + danoturno);
+                        puntosdevida2 = Math.max(0, puntosdevida2 - danoturno);
+                        break;
                     }
-                    System.out.println(nombre2 + " ataca, daño hecho a " + nombre1 + " = " + danoturno);
-                    puntosdevida1 = Math.max(0, puntosdevida1 - danoturno);
+
+                    case 2: {
+                        int curacion1 = Math.min(30, 200 - puntosdevida1); // Cura hasta 30 sin pasar la vida máx
+                        puntosdevida1 += curacion1;
+                        System.out.println(nombre1 + " se cura +" + curacion1 + " puntos de vida.");
+                        break;
+                    }
+
+                    default:
+                        System.out.println("Opción no válida. Pierdes el turno.");
+                }
+
+                // Turno jugador 2 si sigue vivo
+                if (puntosdevida2 > 0) {
+                    System.out.println("Ahora ataca " + nombre2 + ". Introduce 1 si quieres atacar y 2 si quieres curarte");
+                    opcion2 = in.nextInt();
+
+                    switch (opcion2) {
+                        case 1: {
+                            int defensaReducida = (int)(defensa1 * 0.5);
+                            maxDanio2 = Math.max(1, ataque2 - defensaReducida);
+                            danoturno = ataquerandom.nextInt(maxDanio2) + 1;
+
+                            int dadoCritico = ataquerandom.nextInt(100) + 1;
+                            if (dadoCritico <= probcritico) {
+                                System.out.println("CRITICO!!! " + nombre2 + " hace daño X2");
+                                danoturno *= 2;
+                            }
+
+                            System.out.println(nombre2 + " ataca, daño hecho a " + nombre1 + " = " + danoturno);
+                            puntosdevida1 = Math.max(0, puntosdevida1 - danoturno);
+                            break;
+                        }
+
+                        case 2: {
+                            int curacion2 = Math.min(30, 200 - puntosdevida2);
+                            puntosdevida2 += curacion2;
+                            System.out.println(nombre2 + " se cura +" + curacion2 + " puntos de vida.");
+                            break;
+                        }
+
+                        default:
+                            System.out.println("Opción no válida. Pierdes el turno.");
+                    }
                 }
 
             } else {
-                // Ataque jugador 2
-                maxDanio2 = Math.max(1, ataque2 - defensa1);
-                danoturno = ataquerandom.nextInt(maxDanio2) + 1;
-                int dadoCritico = ataquerandom.nextInt(100) + 1;
-                if (dadoCritico <= probcritico) {
-                    System.out.println("CRITICO!!! " + nombre2 + " hace daño X2");
-                    danoturno *= 2;
-                }
-                System.out.println(nombre2 + " ataca, daño hecho a " + nombre1 + " = " + danoturno);
-                puntosdevida1 = Math.max(0, puntosdevida1 - danoturno);
+                // Si el jugador 2 tiene más velocidad, va primero
+                System.out.println("Introduce 1 si quieres atacar y 2 si quieres curarte");
+                opcion2 = in.nextInt();
 
-                // Ataque jugador 1 solo si sigue vivo
-                if (puntosdevida1 > 0) {
-                    maxDanio1 = Math.max(1, ataque1 - defensa2);
-                    danoturno = ataquerandom.nextInt(maxDanio1) + 1;
-                    dadoCritico = ataquerandom.nextInt(100) + 1;
-                    if (dadoCritico <= probcritico) {
-                        System.out.println("CRITICO!!! " + nombre1 + " hace daño X2");
-                        danoturno *= 2;
+                switch (opcion2) {
+                    case 1: {
+                        int defensaReducida = (int)(defensa1 * 0.5);
+                        maxDanio2 = Math.max(1, ataque2 - defensaReducida);
+                        danoturno = ataquerandom.nextInt(maxDanio2) + 1;
+
+                        int dadoCritico = ataquerandom.nextInt(100) + 1;
+                        if (dadoCritico <= probcritico) {
+                            System.out.println("CRITICO!!! " + nombre2 + " hace daño X2");
+                            danoturno *= 2;
+                        }
+
+                        System.out.println(nombre2 + " ataca, daño hecho a " + nombre1 + " = " + danoturno);
+                        puntosdevida1 = Math.max(0, puntosdevida1 - danoturno);
+                        break;
                     }
-                    System.out.println(nombre1 + " ataca, daño hecho a " + nombre2 + " = " + danoturno);
-                    puntosdevida2 = Math.max(0, puntosdevida2 - danoturno);
+
+                    case 2: {
+                        int curacion2 = Math.min(30, 200 - puntosdevida2);
+                        puntosdevida2 += curacion2;
+                        System.out.println(nombre2 + " se cura +" + curacion2 + " puntos de vida.");
+                        break;
+                    }
+
+                    default:
+                        System.out.println("Opción no válida. Pierdes el turno.");
+                }
+
+                if (puntosdevida1 > 0) {
+                    System.out.println("Ahora ataca " + nombre1 + ". Introduce 1 si quieres atacar y 2 si quieres curarte");
+                    opcion1 = in.nextInt();
+
+                    switch (opcion1) {
+                        case 1: {
+                            int defensaReducida = (int)(defensa2 * 0.5);
+                            maxDanio1 = Math.max(1, ataque1 - defensaReducida);
+                            danoturno = ataquerandom.nextInt(maxDanio1) + 1;
+
+                            int dadoCritico = ataquerandom.nextInt(100) + 1;
+                            if (dadoCritico <= probcritico) {
+                                System.out.println("CRITICO!!! " + nombre1 + " hace daño X2");
+                                danoturno *= 2;
+                            }
+
+                            System.out.println(nombre1 + " ataca, daño hecho a " + nombre2 + " = " + danoturno);
+                            puntosdevida2 = Math.max(0, puntosdevida2 - danoturno);
+                            break;
+                        }
+
+                        case 2: {
+                            int curacion1 = Math.min(30, 200 - puntosdevida1);
+                            puntosdevida1 += curacion1;
+                            System.out.println(nombre1 + " se cura +" + curacion1 + " puntos de vida.");
+                            break;
+                        }
+
+                        default:
+                            System.out.println("Opción no válida. Pierdes el turno.");
+                    }
                 }
             }
+            // Mostrar barras de vida con corazones ❤️
+            int corazonesTotales = 20;
+            int corazonesLlenos1 = puntosdevida1 * corazonesTotales / 200;
+            int corazonesLlenos2 = puntosdevida2 * corazonesTotales / 200;
 
-            // Mostrar barras de vida
-            int barra1 = puntosdevida1 * 20 / 200;
-            int barra2 = puntosdevida2 * 20 / 200;
-            String vidaGrafica1 = "█".repeat(barra1) + "-".repeat(20 - barra1);
-            String vidaGrafica2 = "█".repeat(barra2) + "-".repeat(20 - barra2);
-            System.out.println(nombre1 + ":" + puntosdevida1 + " " + vidaGrafica1);
-            System.out.println(nombre2 + ":" + puntosdevida2 + " " + vidaGrafica2);
+            String vidaGrafica1 = "❤".repeat(corazonesLlenos1) + "♡".repeat(corazonesTotales - corazonesLlenos1);
+            String vidaGrafica2 = "❤".repeat(corazonesLlenos2) + "♡".repeat(corazonesTotales - corazonesLlenos2);
 
-            // Pausa hasta que el jugador presione ENTER
+            // Mostrar nombre, vida actual y barra de corazones
+            System.out.println(nombre1 + ": " + puntosdevida1 + " / 200  " + vidaGrafica1);
+            System.out.println(nombre2 + ": " + puntosdevida2 + " / 200  " + vidaGrafica2);
+
+
+            // Pausa entre rondas
             if (puntosdevida1 > 0 && puntosdevida2 > 0) {
                 System.out.println("Pulsa ENTER para ir a la siguiente ronda");
                 in.nextLine();
+                in.nextLine();
             }
         }
+
 
         System.out.println("\n==========================");
         System.out.println("🏁  COMBATE FINALIZADO");
