@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class Tema2Ejercicio20 {
     public static void main(String[] args) {
-        int numeroA = 0;
-        int numeroB = 0;
-        int cont = 0;
+        int numeroA ;
+        int numeroB ;
+        int cont ;
         Scanner in = new Scanner(System.in);
 
         System.out.println("Indica el numero de A");

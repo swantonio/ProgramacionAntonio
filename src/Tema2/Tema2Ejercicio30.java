@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class Tema2Ejercicio30 {
     public static void main(String[] args) {
-        double primernumero = 0;
-        double segundonumero = 0;
-        double resultado = 0;
+        double primernumero ;
+        double segundonumero ;
+        double resultado ;
         boolean continuar = true; // Controla el bucle
-        String operador = "";
+        String operador ;
 
 
         Scanner in = new Scanner(System.in);
