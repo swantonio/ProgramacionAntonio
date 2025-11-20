@@ -7,8 +7,6 @@ public class Tema2Ejercicio26 {
         int numero = 0;
         int contadordivisores = 0;
         Scanner in = new Scanner(System.in);
-
-
             System.out.print("Introduce un número entero positivo para comprobar si es primo: ");
             numero = in.nextInt();
 
