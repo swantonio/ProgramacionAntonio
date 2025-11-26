@@ -26,10 +26,10 @@ public class MyMath {
         return Math.PI * radio * radio;
     }
 
-    public static void esPrimo(int numero) {
+    public static boolean esPrimo(int numero) {
         if (numero <= 1) {
             System.out.println("El número no es primo");
-            return;
+            return false;
         }
         boolean esPrimo = true;
         int i = 2;
@@ -45,9 +45,14 @@ public class MyMath {
         } else {
             System.out.println("El número no es primo");
         }
+        return esPrimo;
+    }
+    public static boolean noEsPrimo(int numero) {
+        return !esPrimo(numero);
     }
 
-    public static int numDigitos(int numero) {
+
+        public static int numDigitos(int numero) {
         numero = Math.abs(numero);
         int contador = 1;
         if (numero == 0) return 1;
@@ -91,8 +96,9 @@ public class MyMath {
     }
     public static long factorial(int factorial) {
         if (factorial < 0) {
+            factorial = -factorial;
             System.out.println("El factorial no existe para números negativos.");
-            return -1;
+            //return -1;
         }
         long resultado = 1;
         for (int i = 2; i <= factorial; i++) {
@@ -115,21 +121,22 @@ public class MyMath {
     public static int sumarDigitos(int numero) {
         numero = Math.abs(numero);
         int suma = 0;
+        int digito;
         while (numero > 0) {
-            int digito = numero % 10;
+            digito = numero % 10;
             suma += digito;
             numero /= 10;
         }
         return suma;
     }
-    public static void ecuacion(int numa, int numb, int numc) {
+    public static int ecuacion(int numa, int numb, int numc) {
         int resultado = numb * numb - 4 * numa + numc;
         if (resultado > 0) {
-            System.out.println("Hay dos soluciones reales distintas");
+            return 2;
         } else if (resultado < 0) {
-            System.out.println("No hay solucion real");
+            return 0;
         } else {
-            System.out.println("Hay una solucion");
+            return 1;
         }
     }
 }

@@ -51,48 +51,60 @@ public static void main(String[] args) {
                 System.out.println("Área = " + MyMath.squareArea(ls2));
                 break;
             case 'g':
+                //TODO: usar el valor devuelto de la función "esPrimo"
                 System.out.println("Introduce el numero");
                 numero  = in.nextInt();
                 MyMath.esPrimo(numero);
                 break;
             case 'h':
-                System.out.println("Introduce el numero");
+                System.out.println("Intrdoce el numero");
                 numero = in.nextInt();
-                System.out.println("La cantidad de digitos es: " + MyMath.numDigitos(numero));
+                MyMath.noEsPrimo(numero);
                 break;
             case 'i':
                 System.out.println("Introduce el numero");
                 numero = in.nextInt();
-                System.out.println("La cantidad de digitos pares es: " + MyMath.contarDigitosPares(numero));
+                System.out.println("La cantidad de digitos es: " + MyMath.numDigitos(numero));
                 break;
             case 'j':
                 System.out.println("Introduce el numero");
                 numero = in.nextInt();
-                System.out.println("La cantidad de digitos impares es: " + MyMath.contarDigitosImpares(numero));
+                System.out.println("La cantidad de digitos pares es: " + MyMath.contarDigitosPares(numero));
                 break;
             case 'k':
                 System.out.println("Introduce el numero");
-                factorial = in.nextInt();
-                System.out.println("El factorial del numero es: " + MyMath.factorial(factorial));
+                numero = in.nextInt();
+                System.out.println("La cantidad de digitos impares es: " + MyMath.contarDigitosImpares(numero));
                 break;
             case 'l':
                 System.out.println("Introduce el numero");
                 factorial = in.nextInt();
-                System.out.println("El factorial recurisvo del numero es: " + MyMath.factorialRecursivo(factorial));
+                System.out.println("El factorial del numero es: " + MyMath.factorial(factorial));
                 break;
             case 'm':
+                System.out.println("Introduce el numero");
+                factorial = in.nextInt();
+                System.out.println("El factorial recurisvo del numero es: " + MyMath.factorialRecursivo(factorial));
+                break;
+            case 'n':
                 System.out.println("Introduce el numero");
                 numero = in.nextInt();
                 System.out.println("La suma de los digitos del numero es: " + MyMath.sumarDigitos(numero));
                 break;
-            case 'n':
+            case 'o':
                 System.out.println("Introduce numero a");
                 int numa = in.nextInt();
                 System.out.println("Introduce numero b");
                 int numb= in.nextInt();
                 System.out.println("Introduce numero c");
                 int numc = in.nextInt();
-                MyMath.ecuacion(numa, numb, numc);
+                if(MyMath.ecuacion(numa, numb, numc)==0) {
+                    System.out.println("No hay solucion real");
+                } else if (MyMath.ecuacion(numa, numb, numc)==1) {
+                    System.out.println("Hay una solucion");
+                } else {
+                    System.out.println("Hay dos soluciones reales distintas");
+                }
                 break;
             default:
                 System.out.println("Error");
