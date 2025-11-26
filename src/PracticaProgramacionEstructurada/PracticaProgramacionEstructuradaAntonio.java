@@ -200,6 +200,7 @@ public class PracticaProgramacionEstructuradaAntonio {
         }
         Random ataquerandom = new Random();
         in.nextLine();
+        in.nextLine();
 
         while (puntosdevida1 > 0 && puntosdevida2 > 0) {
             System.out.println("\nRONDA " + ronda);
