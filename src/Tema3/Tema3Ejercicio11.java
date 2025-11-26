@@ -85,6 +85,18 @@ public static void main(String[] args) {
                 numero = in.nextInt();
                 System.out.println("La suma de los digitos del numero es: " + MyMath.sumarDigitos(numero));
                 break;
+            case 'n':
+                System.out.println("Introduce numero a");
+                int numa = in.nextInt();
+                System.out.println("Introduce numero b");
+                int numb= in.nextInt();
+                System.out.println("Introduce numero c");
+                int numc = in.nextInt();
+                MyMath.ecuacion(numa, numb, numc);
+                break;
+            default:
+                System.out.println("Error");
+                break;
         }
     }
     public static void menu() {
@@ -101,6 +113,7 @@ public static void main(String[] args) {
         System.out.println("Introduce k si quieres saber el factorial de un numero");
         System.out.println("Introduce l si quieres saber el factorial recursivo de un numero");
         System.out.println("Introduce m si quieres sumar todos los digitos de un numero entero");
+        System.out.println("Introduce n si quieres saber los resultados de la ecuacion");
     }
 }
 

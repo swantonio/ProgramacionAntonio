@@ -23,4 +23,11 @@ public class Tema3Ejercicio1 {
             System.out.println("El numero es negativo");
         }
     }
+
+    public static class MyArray {
+        public static void main(String[] args) {
+
+        }
+
+    }
 }
