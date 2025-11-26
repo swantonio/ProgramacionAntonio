@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Tema3Ejercicio11 {
     static Scanner in = new Scanner(System.in);
 public static void main(String[] args) {
-    int numero;
+    int numero = 0;
     int factorial;
     System.out.println("Introduce alguna de las siguientes opciones");
     menu();
@@ -51,47 +51,59 @@ public static void main(String[] args) {
                 System.out.println("Área = " + MyMath.squareArea(ls2));
                 break;
             case 'g':
-                //TODO: usar el valor devuelto de la función "esPrimo"
-                System.out.println("Introduce el numero");
-                numero  = in.nextInt();
-                MyMath.esPrimo(numero);
+                System.out.println("¿Qué quieres comprobar?");
+                System.out.println("1. Si el número ES primo");
+                System.out.println("2. Si el número NO es primo");
+                int subOpcion = in.nextInt();
+
+                if (subOpcion == 1) {
+                    if (MyMath.esPrimo(numero)) {
+                        System.out.println("El número es primo");
+                    } else {
+                        System.out.println("El número NO es primo");
+                    }
+                } else if (subOpcion == 2) {
+                    if (MyMath.noEsPrimo(numero)) {
+                        System.out.println("El número NO es primo");
+                    } else {
+                        System.out.println("El número SÍ es primo");
+                    }
+                } else {
+                    System.out.println("Opción no válida");
+                }
                 break;
+
             case 'h':
-                System.out.println("Intrdoce el numero");
-                numero = in.nextInt();
-                MyMath.noEsPrimo(numero);
-                break;
-            case 'i':
                 System.out.println("Introduce el numero");
                 numero = in.nextInt();
                 System.out.println("La cantidad de digitos es: " + MyMath.numDigitos(numero));
                 break;
-            case 'j':
+            case 'i':
                 System.out.println("Introduce el numero");
                 numero = in.nextInt();
                 System.out.println("La cantidad de digitos pares es: " + MyMath.contarDigitosPares(numero));
                 break;
-            case 'k':
+            case 'j':
                 System.out.println("Introduce el numero");
                 numero = in.nextInt();
                 System.out.println("La cantidad de digitos impares es: " + MyMath.contarDigitosImpares(numero));
                 break;
-            case 'l':
+            case 'k':
                 System.out.println("Introduce el numero");
                 factorial = in.nextInt();
                 System.out.println("El factorial del numero es: " + MyMath.factorial(factorial));
                 break;
-            case 'm':
+            case 'l':
                 System.out.println("Introduce el numero");
                 factorial = in.nextInt();
                 System.out.println("El factorial recurisvo del numero es: " + MyMath.factorialRecursivo(factorial));
                 break;
-            case 'n':
+            case 'm':
                 System.out.println("Introduce el numero");
                 numero = in.nextInt();
                 System.out.println("La suma de los digitos del numero es: " + MyMath.sumarDigitos(numero));
                 break;
-            case 'o':
+            case 'n':
                 System.out.println("Introduce numero a");
                 int numa = in.nextInt();
                 System.out.println("Introduce numero b");
@@ -114,11 +126,11 @@ public static void main(String[] args) {
     public static void menu() {
         System.out.println("Introduce a si quieres saber el perimetro del circulo");
         System.out.println("Introduce b si quieres saber el area del circulo");
-        System.out.print("Introduce c si quieres saber el perimetro del rectangulo:");
+        System.out.println("Introduce c si quieres saber el perimetro del rectangulo:");
         System.out.println("Introduce d si quieres saber el area del rectangulo");
         System.out.println("Introduce e si quieres saber el perimetro del cuadrado");
         System.out.println("Introduce f si quieres saber el area del cuadrado");
-        System.out.println("Introduce g si quieres saber si un numero es primo");
+        System.out.println("Introduce g si quieres saber si un numero es primo o no");
         System.out.println("Introduce h si quieres saber el numero de digitos de un numero entero");
         System.out.println("Introduce i si quieres saber la cantidad de digitos pares de un numero");
         System.out.println("Introduce j si quieres saber la cantidad de digitos impares de un numero :)");

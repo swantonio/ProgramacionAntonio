@@ -40,15 +40,11 @@ public class MyMath {
             }
             i++;
         }
-        if (esPrimo) {
-            System.out.println("El número es primo");
-        } else {
-            System.out.println("El número no es primo");
-        }
         return esPrimo;
     }
     public static boolean noEsPrimo(int numero) {
         return !esPrimo(numero);
+
     }
 
 
