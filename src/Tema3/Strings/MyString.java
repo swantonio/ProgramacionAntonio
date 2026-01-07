@@ -5,11 +5,9 @@ public class MyString {
         StringBuilder sb = new StringBuilder(cadena);
         return sb.reverse().toString().toUpperCase();
     }
-
     private static boolean esVocal(char c) {
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
-
     public static int contarVocales(String cadena) {
         int contador = 0;
         String cadenaMinusculas = cadena.toLowerCase();
