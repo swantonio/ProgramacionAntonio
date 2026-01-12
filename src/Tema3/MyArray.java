@@ -48,27 +48,31 @@ public class MyArray {
         }
         return false;
     }
-    public static int []sumaVectores(int [] a, int [] b) {
-        int [] resultado = new int [a.length];
+
+    public static int[] sumaVectores(int[] a, int[] b) {
+        int[] resultado = new int[a.length];
         for (int i = 0; i < resultado.length; i++) {
             resultado[i] = a[i] + b[i];
         }
         return resultado;
     }
-    public static int []restaVectores(int [] a, int [] b){
-        int [] resultado = new int[a.length];
+
+    public static int[] restaVectores(int[] a, int[] b) {
+        int[] resultado = new int[a.length];
         for (int i = 0; i < resultado.length; i++) {
             resultado[i] = a[i] - b[i];
         }
         return resultado;
     }
-    public static int productoVectores (int [] a, int [] b) {
-        int resultado= 0;
+
+    public static int productoVectores(int[] a, int[] b) {
+        int resultado = 0;
         for (int i = 0; i < a.length; i++) {
             resultado += a[i] * b[i];
         }
         return resultado;
     }
+
     public static int[] inversionArray(int[] a) {
         int[] resultado = new int[a.length];
         for (int i = 0; i < a.length; i++) {
@@ -76,17 +80,16 @@ public class MyArray {
         }
         return resultado;
     }
-    public static void inversionArray2 (int [] inversionArray2) {
-            int inicio = 0;
-            int fin = inversionArray2.length - 1;
-            while (inicio < fin) {
-                int temp = inversionArray2[inicio];
-                inversionArray2[inicio] = inversionArray2[fin];
-                inversionArray2[fin] = temp;
-                inicio++;
-                fin--;
-            }
+
+    public static void inversionArray2(int[] inversionArray2) {
+        int inicio = 0;
+        int fin = inversionArray2.length - 1;
+        while (inicio < fin) {
+            int temp = inversionArray2[inicio];
+            inversionArray2[inicio] = inversionArray2[fin];
+            inversionArray2[fin] = temp;
+            inicio++;
+            fin--;
         }
-    public static boolean capicuaArray (int [] capicuaArray) {
     }
-    }
+}
