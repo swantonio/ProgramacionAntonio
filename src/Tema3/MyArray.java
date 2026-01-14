@@ -87,6 +87,9 @@ public class MyArray {
                 fin--;
             }
         }
-    public static boolean capicuaArray (int [] capicuaArray) {
+
+
+    public static boolean esCapicua(int[] vector1) {
+        return false;
     }
-    }
+}

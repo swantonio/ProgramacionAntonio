@@ -6,31 +6,39 @@ public class PersonaMain {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.println("Persona 1");
-        System.out.println("Introduce el nombre de la primera persona");
-        String nombre1 = in.nextLine();
         System.out.println("Introduce el dni de la primera persona");
-        String dni1 = in.nextLine();
+        Persona persona1 = new Persona(in.nextLine());
+        System.out.println("Introduce el nombre de la primera persona");
+        persona1.setNombre(in.nextLine());
         System.out.println("Introduce el apellido de la primera persona");
-        String apellido1 = in.nextLine();
+        persona1.setApellido(in.nextLine());
         System.out.println("Introduce la edad de la primera persona");
-        int edad1 = in.nextInt();
-        Persona persona1 = new Persona(dni1, nombre1, apellido1, edad1 );
+        persona1.setEdad(in.nextInt());
+
+        in.nextLine();
 
         System.out.println("Persona 2");
-        System.out.println("Introduce el nombre de la primera persona");
-        String nombre2 = in.nextLine();
-        System.out.println("Introduce el dni de la primera persona");
-        String dni2 = in.nextLine();
-        System.out.println("Introduce el apellido de la primera persona");
-        String apellido2 = in.nextLine();
-        System.out.println("Introduce la edad de la primera persona");
-        int edad2 = in.nextInt();
-        Persona persona2 = new Persona(dni2, nombre2, apellido2, edad2);
+        System.out.println("Introduce el dni de la segunda persona");
+        Persona persona2 = new Persona(in.nextLine());
+        System.out.println("Introduce el nombre de la segunda persona");
+        persona2.setNombre(in.nextLine());
+        System.out.println("Introduce el apellido de la segunda persona");
+        persona2.setApellido(in.nextLine());
+        System.out.println("Introduce la edad de la segunda persona");
+        persona2.setEdad(in.nextInt());
 
         persona1.print();
         persona2.print();
 
-        persona1.isAdult(edad1);
-        persona2.isAdult(edad2);
+        System.out.println(persona1.isAdult(persona1.getEdad()));
+        System.out.println(persona2.isAdult(persona2.getEdad()));
+
+        System.out.println(persona1.isRetired(persona1.getEdad()));
+        System.out.println(persona2.isRetired(persona2.getEdad()));
+
+        System.out.println(persona1.checkDNI(persona1.getDni()));
+        System.out.println(persona2.checkDNI(persona2.getDni()));
+
+        System.out.println(persona1.ageDifference(persona2));
     }
 }
