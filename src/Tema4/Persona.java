@@ -26,14 +26,6 @@ public class Persona {
         this.dni = dni;
     }
 
-    public String isAdult(int edad) {
-        if (edad <= adultAge) {
-            return nombre + " es mayor de edad";
-        } else {
-            return nombre + " es menor de edad";
-        }
-    }
-
     public String getDni() {
         return dni;
     }
@@ -59,13 +51,19 @@ public class Persona {
     }
 
     public void setEdad(int edad) {
-        if (edad >= 0 && edad <= 100) {
+        if (edad >= 0 && edad <= 999) {
             this.edad = edad;
         } else {
             this.edad = edadDefault;
         }
     }
-
+    public String isAdult(int edad) {
+        if (edad <= adultAge) {
+            return nombre + " es mayor de edad";
+        } else {
+            return nombre + " es menor de edad";
+        }
+    }
     public String isRetired(int edad) {
         if (edad > retiredAge ) {
             return nombre + " esta jubilado";

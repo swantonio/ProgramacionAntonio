@@ -62,12 +62,14 @@ public class JuegoRol {
                 System.out.println("Horda " + hordas_superadas + " superada. vida actual: " + jugador.getHealth());
                 if (Math.random() < prob_descanso) {
                     jugador.rest();
+                    System.out.println("El jugador descansa y recupera 50 de vida");
                 }
                 if (Math.random() < prob_pocion) {
                     jugador.drinkPotion();
+                    System.out.println("El jugador toma una pocion y recupera 10 de vida");
                 }
             }
         }
-        System.out.println("Fin del juego. Hordas sobrevividas: " + hordas_superadas);
+        System.out.println("Game over. Hordas sobrevividas: " + hordas_superadas);
     }
 }

@@ -94,6 +94,8 @@ public class PruebaCuentas {
              case 8:
                  System.out.println("Saliendo...");
                  break;
+             default:
+                 System.out.println("Opcion invalida");
          }
      }  while (opcion != 8) ;
     }
