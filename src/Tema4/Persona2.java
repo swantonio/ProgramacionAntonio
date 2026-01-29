@@ -9,10 +9,10 @@ public class Persona2 {
 
     public Persona2() {
         this.dni = "Hola";
-        this.cuentasBancarias = new Cuenta[0];
+        this.cuentasBancarias = new Cuenta[3];
         this.nombre = "Paco";
         this.apellido = "payo";
-        this.numCuentas = 3;
+        this.numCuentas = 0;
     }
 
     public Persona2(String dni, Cuenta[] cuentasBancarias, String nombre, String apellido, int numCuentas) {
@@ -61,20 +61,46 @@ public class Persona2 {
     public int getNumCuentas() {
         return numCuentas;
     }
+    public boolean estaCreada() {
+        return !dni.isEmpty();
+    }
+
+    public void crearPersona(String dni, String nombre, String apellido) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
     public boolean añadirCuenta(String numCuenta, double saldoInicial) {
         if (numCuentas < 3) {
-            cuentasBancarias[numCuentas] = new Cuenta(numCuenta, saldoInicial);
+            cuentasBancarias[numCuentas] =
+                    new Cuenta(numCuenta, saldoInicial);
             numCuentas++;
             return true;
         }
         return false;
     }
+    public void recibirNomina(String numCuenta, double cantidad) {
+        int pos = buscarCuenta(numCuenta);
+        if (pos != -1) {
+            cuentasBancarias[pos].recibirAbonos(cantidad);
+        }
+    }
+    public void pagarRecibo(String numCuenta, double cantidad) {
+        int pos = buscarCuenta(numCuenta);
+        if (pos != -1) {
+            cuentasBancarias[pos].pagarRecibos(cantidad);
+        }
+    }
+    public void transferir(String cuentaOrigen, Persona2 destino,
+                           String cuentaDestino, double cantidad) {
+        int posOrigen = buscarCuenta(cuentaOrigen);
+        int posDestino = destino.buscarCuenta(cuentaDestino);
 
-    public void print () {
-        System.out.println("Nombre: " + nombre + " | DNI: " + dni);
-        for (int i = 0; i < numCuentas; i++) {
-            System.out.println("Cuenta: " + cuentasBancarias[i].getNumeroDeCuenta()
-                    + " Saldo: " + cuentasBancarias[i].getSaldoDisponible());
+        if (posOrigen != -1 && posDestino != -1) {
+            cuentasBancarias[posOrigen]
+                    .transferir(destino.cuentasBancarias[posDestino],
+                            cantidad);
         }
     }
     public boolean esMorosa() {
@@ -85,34 +111,23 @@ public class Persona2 {
         }
         return false;
     }
-    public void recibirNomina(String numCuenta, double cantidad) {
-        Cuenta cuenta = buscarCuenta(numCuenta);
-        if (cuenta != null) {
-            cuenta.recibirAbonos(cantidad);
-            }
-        }
-    public void pagarRecibo(String numeroCuenta, double cantidad) {
-        Cuenta cuenta = buscarCuenta(numeroCuenta);
-        if (cuenta != null) {
-            cuenta.pagarRecibos(cantidad);
-        }
-    }
-
-    public void transferir(String cuentaOrigen, Persona destino,
-                           String cuentaDestino, double cantidad) {
-        Cuenta cuenta1 = buscarCuenta(cuentaOrigen);
-        Cuenta cuenta2 = destino.busca
-        if (cuenta1 != null && cuenta2 != null) {
-            cuenta1.transferir(cuenta2 , cantidad);
-        }
-    }
-    private Cuenta buscarCuenta(String numeroCuenta) {
+    public void print() {
+        System.out.println(nombre + " " + apellido + " | DNI: " + dni);
         for (int i = 0; i < numCuentas; i++) {
-            if (cuentasBancarias[i].getNumeroDeCuenta().equals(numeroCuenta)) {
-                return cuentasBancarias[i];
+            System.out.println(
+                    cuentasBancarias[i].getNumeroDeCuenta() +
+                            " Saldo: " + cuentasBancarias[i].getSaldoDisponible()
+            );
+        }
+    }
+    private int buscarCuenta(String numeroCuenta) {
+        for (int i = 0; i < numCuentas; i++) {
+            if (cuentasBancarias[i].getNumeroDeCuenta()
+                    .equals(numeroCuenta)) {
+                return i;
             }
         }
-        return null;
+        return -1;
     }
     }
 

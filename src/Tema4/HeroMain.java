@@ -6,20 +6,20 @@ public class HeroMain {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
 
-        System.out.println("=== CONFIGURACIÓN DEL HÉROE 1 ===");
+        System.out.println("=== Configuracion heroe===");
         System.out.print("Introduce el nombre de tu heroe: ");
         String n1 = entrada.nextLine();
-        System.out.print("Introduce su salud inicial (ej. 100): ");
+        System.out.print("Introduce su salud inicial: ");
         int s1 = entrada.nextInt();
-        System.out.print("Introduce sus puntos de ataque (ej. 20): ");
+        System.out.print("Introduce sus puntos de ataque: ");
         int a1 = entrada.nextInt();
-        System.out.print("Introduce sus puntos de defensa (ej. 5): ");
+        System.out.print("Introduce sus puntos de defensa: ");
         int d1 = entrada.nextInt();
         entrada.nextLine();
 
         Hero h1 = new Hero(n1, s1, a1, d1);
 
-        System.out.println("\n=== CONFIGURACIÓN DEL HÉROE 2 (ENEMIGO) ===");
+        System.out.println("=== Configuracion enemigo===");
         System.out.print("Introduce el nombre del oponente: ");
         String n2 = entrada.nextLine();
         System.out.print("Introduce su salud inicial: ");
@@ -31,7 +31,7 @@ public class HeroMain {
 
         Hero h2 = new Hero(n2, s2, a2, d2);
 
-        System.out.println("\n¡EL COMBATE COMIENZA AHORA!");
+        System.out.println("Comienza el combate");
         System.out.println("Estado inicial:");
         System.out.println(h1.toString());
         System.out.println(h2.toString());
@@ -58,7 +58,7 @@ public class HeroMain {
 
 
         System.out.println("\n==================================================");
-        System.out.println("¡EL COMBATE HA TERMINADO!");
+        System.out.println("El combate ha terminado");
 
         if (h1.getHealth() > 0) {
             System.out.println("El ganador es: " + h1.getName());

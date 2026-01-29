@@ -60,7 +60,6 @@ public class Hero {
             this.health = 0;
         }
     }
-
     private void levelUp() {
         this.level++;
         this.maxHealth += levelUpHealth;
@@ -69,7 +68,6 @@ public class Hero {
         this.defense += levelUpStat;
         this.experience = 0;
     }
-
     public int getHealth() {
         return health;
     }
@@ -81,7 +79,6 @@ public class Hero {
     public String getName() {
         return name;
     }
-
     public String toString() {
         return "Nombre: " + name + " Nivel: " + level + " Salud: " + health + "/" + maxHealth +
                 " Ataque: " + attack + " Defensa: " + defense + " XP: " + experience;

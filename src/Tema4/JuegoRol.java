@@ -60,7 +60,6 @@ public class JuegoRol {
             if (jugador.getHealth() > 0) {
                 hordas_superadas = hordas_superadas + 1;
                 System.out.println("Horda " + hordas_superadas + " superada. vida actual: " + jugador.getHealth());
-
                 if (Math.random() < prob_descanso) {
                     jugador.rest();
                 }
