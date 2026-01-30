@@ -1,11 +1,11 @@
-package Tema4;
+package Tema4.POO2;
 
 import java.util.Scanner;
 
 public class PruebaCuentas {
     public static void main(String[] args) {
-        Persona2 persona = new Persona2();
-        Persona2 persona2 = new Persona2();
+        Persona persona = new Persona();
+        Persona persona2 = new Persona();
         int opcion;
         do {
          System.out.println("Introduce una de las opciones");

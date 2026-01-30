@@ -1,13 +1,13 @@
-package Tema4;
+package Tema4.POO2;
 
-public class Persona2 {
+public class Persona {
     private String dni;
     private Cuenta[] cuentasBancarias;
     private String nombre;
     private String apellido;
     private int numCuentas;
 
-    public Persona2() {
+    public Persona() {
         this.dni = "Hola";
         this.cuentasBancarias = new Cuenta[3];
         this.nombre = "Paco";
@@ -15,7 +15,7 @@ public class Persona2 {
         this.numCuentas = 0;
     }
 
-    public Persona2(String dni, Cuenta[] cuentasBancarias, String nombre, String apellido, int numCuentas) {
+    public Persona(String dni, Cuenta[] cuentasBancarias, String nombre, String apellido, int numCuentas) {
         this.dni = dni;
         this.cuentasBancarias = new Cuenta [3];
         this.nombre = nombre;
@@ -92,7 +92,7 @@ public class Persona2 {
             cuentasBancarias[pos].pagarRecibos(cantidad);
         }
     }
-    public void transferir(String cuentaOrigen, Persona2 destino,
+    public void transferir(String cuentaOrigen, Persona destino,
                            String cuentaDestino, double cantidad) {
         int posOrigen = buscarCuenta(cuentaOrigen);
         int posDestino = destino.buscarCuenta(cuentaDestino);
