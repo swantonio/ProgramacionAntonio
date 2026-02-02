@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class PruebaCuentas {
     public static void main(String[] args) {
-        Persona persona = new Persona();
-        Persona persona2 = new Persona();
+        Persona[] listaPersonas = new Persona[10];
+        int totalPersonas = 0;
         int opcion;
         do {
          System.out.println("Introduce una de las opciones");
@@ -22,73 +22,106 @@ public class PruebaCuentas {
          in.nextLine();
             switch (opcion) {
              case 1:
-                 System.out.print("Nombre: ");
-                 persona.setNombre(in.next());
-                 System.out.print("Apellido: ");
-                 persona.setApellido(in.next());
-                 System.out.print("DNI: ");
-                 persona.setDni(in.next());
-                 System.out.println("Persona creada correctamente");
+                 if (totalPersonas < listaPersonas.length) {
+                     System.out.print("DNI: "); String dni = in.nextLine();
+                     System.out.print("Nombre: "); String nom = in.nextLine();
+                     System.out.print("Apellido: "); String ape = in.nextLine();
+
+                     listaPersonas[totalPersonas] = new Persona();
+                     listaPersonas[totalPersonas].crearPersona(dni, nom, ape);
+                     totalPersonas++;
+                     System.out.println("Registrado.");
+                 }
                  break;
              case 2:
-                 if (!persona.estaCreada()) {
-                     System.out.println("Primero debes crear la persona");
-                     break;
+                 System.out.print("DNI del titular: ");
+                 String dni2 = in.nextLine();
+                 int posicion = -1;
+                 for (int i = 0; i < totalPersonas; i++) {
+                     if (listaPersonas[i].getDni().equalsIgnoreCase(dni2)) {
+                         posicion = i;
+                         break;
+                     }
                  }
-                 System.out.print("Numero de cuenta: ");
-                 String numCuenta = in.next();
-                 System.out.print("Saldo inicial: ");
-                 double saldo = in.nextDouble();
-                 if (persona.añadirCuenta(numCuenta, saldo)) {
-                     System.out.println("Cuenta añadida");
+                 if (posicion != -1) {
+                     System.out.print("Num Cuenta: "); String n = in.next();
+                     System.out.print("Saldo: "); double s = in.nextDouble();
+                     listaPersonas[posicion].añadirCuenta(n, s);
                  } else {
-                     System.out.println("No se pueden añadir más cuentas");
+                     System.out.println("No encontrado.");
                  }
+                 break;
              case 3:
-                 if (!persona.estaCreada()) {
-                     System.out.println("Persona no creada");
-                 } else {
-                     persona.print();
+                 System.out.print("DNI: ");
+                 String dni3 = in.nextLine();
+                 posicion = -1;
+                 for (int i = 0; i < totalPersonas; i++) {
+                     if (listaPersonas[i].getDni().equalsIgnoreCase(dni3)) {
+                         posicion = i;
+                         break;
+                     }
                  }
+                 if (posicion != -1) listaPersonas[posicion].print();
                  break;
              case 4:
-                 if (!persona.estaCreada()) {
-                     System.out.println("Persona no creada");
-                     break;
+                 System.out.print("DNI: ");
+                 String dni4 = in.nextLine();
+                 posicion = -1;
+                 for (int i = 0; i < totalPersonas; i++) {
+                     if (listaPersonas[i].getDni().equalsIgnoreCase(dni4)) {
+                         posicion = i;
+                         break;
+                     }
                  }
-                 System.out.print("Numero de cuenta: ");
-                 String cuentaNomina = in.next();
-
-                 System.out.print("Cantidad: ");
-                 double nomina = in.nextDouble();
-                 persona.recibirNomina(cuentaNomina, nomina);
+                 if (posicion != -1) {
+                     System.out.print("Cuenta: "); String cta = in.next();
+                     System.out.print("Cantidad: "); double cant = in.nextDouble();
+                     listaPersonas[posicion].recibirNomina(cta, cant);
+                 }
                  break;
              case 5:
-                 if (!persona.estaCreada()) {
-                     System.out.println("Persona no creada");
-                     break;
+                 System.out.print("DNI: ");
+                 String dni = in.nextLine();
+                 posicion = -1;
+                 for (int i = 0; i < totalPersonas; i++) {
+                     if (listaPersonas[i].getDni().equalsIgnoreCase(dni)) {
+                         posicion = i;
+                         break;
+                     }
                  }
-                 System.out.print("Numero de cuenta: ");
-                 String cuentaPago = in.next();
-                 System.out.print("Cantidad: ");
-                 double pago = in.nextDouble();
-                 persona.pagarRecibo(cuentaPago, pago);
+                 if (posicion != -1) {
+                     System.out.print("Cuenta: "); String cta = in.next();
+                     System.out.print("Cantidad: "); double cant = in.nextDouble();
+                     listaPersonas[posicion].pagarRecibo(cta, cant);
+                 }
                  break;
              case 6:
-                 System.out.print("Cuenta origen: ");
-                 String origen = in.nextLine();
-                 System.out.print("Cuenta destino: ");
-                 String destino = in.nextLine();
-                 System.out.print("Cantidad: ");
-                 double cantidad = in.nextDouble();
-                 persona.transferir(origen, persona2,
-                         destino, cantidad);
+                 System.out.print("DNI Origen: ");
+                 String dniOrigen = in.nextLine();
+                 int posicionOrigen = -1;
+                 for (int i = 0; i < totalPersonas; i++) {
+                     if (listaPersonas[i].getDni().equalsIgnoreCase(dniOrigen)) { posicionOrigen = i; break; }
+                 }
+
+                 System.out.print("DNI Destino: ");
+                 String dniDestino = in.nextLine();
+                 int posicionDestino = -1;
+                 for (int i = 0; i < totalPersonas; i++) {
+                     if (listaPersonas[i].getDni().equalsIgnoreCase(dniDestino)) { posicionDestino = i; break; }
+                 }
+
+                 if (posicionOrigen != -1 && posicionDestino != -1) {
+                     System.out.print("Cuenta Origen: "); String cO = in.nextLine();
+                     System.out.print("Cuenta Destino: "); String cD = in.nextLine();
+                     System.out.print("Cantidad: "); double cant = in.nextDouble();
+                     listaPersonas[posicionOrigen].transferir(cO, listaPersonas[posicionDestino], cD, cant);
+                 }
                  break;
              case 7:
-                 if (persona.estaCreada() && persona.esMorosa()) {
-                     System.out.println(persona + "es morosa");
-                 } else {
-                     System.out.println(persona + "No es morosa o no está creada");
+                 for (int i = 0; i < totalPersonas; i++) {
+                     if (listaPersonas[i].esMorosa()) {
+                         System.out.println("Moroso: " + listaPersonas[i].getNombre());
+                     }
                  }
                  break;
              case 8:
