@@ -86,9 +86,9 @@ public class PruebaCuentas {
                  break;
              case 7:
                  if (persona.estaCreada() && persona.esMorosa()) {
-                     System.out.println("La persona es morosa");
+                     System.out.println(persona + "es morosa");
                  } else {
-                     System.out.println("No es morosa o no está creada");
+                     System.out.println(persona + "No es morosa o no está creada");
                  }
                  break;
              case 8:
