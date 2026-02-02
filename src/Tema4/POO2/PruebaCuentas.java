@@ -74,9 +74,9 @@ public class PruebaCuentas {
                      }
                  }
                  if (posicion != -1) {
-                     System.out.print("Cuenta: "); String cta = in.next();
-                     System.out.print("Cantidad: "); double cant = in.nextDouble();
-                     listaPersonas[posicion].recibirNomina(cta, cant);
+                     System.out.print("Cuenta: "); String cuenta = in.next();
+                     System.out.print("Cantidad: "); double cantidad = in.nextDouble();
+                     listaPersonas[posicion].recibirNomina(cuenta, cantidad);
                  }
                  break;
              case 5:
