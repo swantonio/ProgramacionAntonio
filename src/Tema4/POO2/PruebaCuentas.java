@@ -35,10 +35,10 @@ public class PruebaCuentas {
                  break;
              case 2:
                  System.out.print("DNI del titular: ");
-                 String dni2 = in.nextLine();
+                 String dni = in.nextLine();
                  int posicion = -1;
                  for (int i = 0; i < totalPersonas; i++) {
-                     if (listaPersonas[i].getDni().equalsIgnoreCase(dni2)) {
+                     if (listaPersonas[i].getDni().equalsIgnoreCase(dni)) {
                          posicion = i;
                          break;
                      }
@@ -81,7 +81,7 @@ public class PruebaCuentas {
                  break;
              case 5:
                  System.out.print("DNI: ");
-                 String dni = in.nextLine();
+                 dni = in.nextLine();
                  posicion = -1;
                  for (int i = 0; i < totalPersonas; i++) {
                      if (listaPersonas[i].getDni().equalsIgnoreCase(dni)) {
