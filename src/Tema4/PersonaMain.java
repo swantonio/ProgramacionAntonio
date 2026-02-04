@@ -36,9 +36,8 @@ public class PersonaMain {
         System.out.println(persona1.isRetired(persona1.getEdad()));
         System.out.println(persona2.isRetired(persona2.getEdad()));
 
-        System.out.println(persona1.checkDNI(persona1.getDni()));
-        System.out.println(persona2.checkDNI(persona2.getDni()));
-
+        persona1.imprimirValidezDNI();
+        persona2.imprimirValidezDNI();
         System.out.println(persona1.ageDifference(persona2));
     }
 }

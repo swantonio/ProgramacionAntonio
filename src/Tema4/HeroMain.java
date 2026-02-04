@@ -45,11 +45,11 @@ public class HeroMain {
                 h2.attack(h1);
             }
             if (h1.getHealth() > 0 && h1.getHealth() < 20) {
-                System.out.println("¡Alerta! " + h1.getName() + " tiene poca vida. Usa una pocion.");
+                System.out.println(h1.getName() + " tiene poca vida. Usa una pocion.");
                 h1.drinkPotion();
             }
             if (h2.getHealth() > 0 && h2.getHealth() < 20) {
-                System.out.println("¡Alerta! " + h2.getName() + " tiene poca vida. Usa una pocion.");
+                System.out.println(h2.getName() + " tiene poca vida. Usa una pocion.");
                 h2.drinkPotion();
             }
 
