@@ -19,13 +19,8 @@ public class ListaCompra {
             in.nextLine();
             switch (opcion) {
                 case 1:
-                    while (continuar) {
                         System.out.print("Producto: ");
                         producto = in.nextLine();
-                        if (producto.equalsIgnoreCase("salir")) {
-                            System.out.println("Saliendo");
-                            continuar = false;
-                        } else {
                             if (lista.contains(producto)) {
                                 System.out.println("El producto '" + producto + "' ya está en la lista.");
                             } else {
@@ -33,10 +28,7 @@ public class ListaCompra {
                                 System.out.println(producto + " añadido");
                                 System.out.println("\nLista final de la compra: " + lista);
                             }
-                        }
-                    }
-                    System.out.println("\nLista final de la compra: " + lista);
-                    break;
+                            break;
                 case 2:
                     System.out.println("Elige el producto de la lista");
                     producto = in.nextLine().toLowerCase();
@@ -53,7 +45,11 @@ public class ListaCompra {
                 case 4:
                     Set<String> faltan = new HashSet<>(lista);
                     faltan.removeAll(carro);
-                    System.out.println("Te falta por comprar: " + faltan);
+                    if (lista.isEmpty()) {
+                        System.out.println("No te queda nada por comprar o no hay nada");
+                    } else {
+                        System.out.println("Te falta por comprar: " + faltan);
+                    }
                     break;
                 case 5:
                     System.out.println("Saliendo...");
@@ -65,8 +61,10 @@ public class ListaCompra {
     public static void menu () {
         System.out.println("Elige una de las siguientes opciones");
         System.out.println("1 Introduce los productos en la lista de la compra");
-        System.out.println("2.Introduce ");
-        System.out.println("-. Salir");
+        System.out.println("2.Introduce productos de la lista en el carrito");
+        System.out.println("3.Ver carro de la compra");
+        System.out.println("4.Ver que queda por añadir al carrito");
+        System.out.println("5. Salir");
     }
 }
 

@@ -48,7 +48,7 @@ public class Gimnasio {
                 System.out.println("Introduce el dni para ver los datos del usuario");
                 dni = in.nextLine();
                 if (usuarios.containsKey(dni)) {
-                    System.out.println("Datos =" + usuarios.get(dni));
+                    System.out.println("Datos: " + usuarios.get(dni));
                 } else {
                     System.out.println("Error el usuario no existe o es incorrecto");
                 }
