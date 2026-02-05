@@ -10,14 +10,11 @@ public class Banco {
         String nombre = "";
         String dni = "";
         int opcion = 0;
+        boolean continuar = true;
         ArrayList<Object> cola = new ArrayList<>();
 
-        do {
-            System.out.println("Elige una de las siguientes opciones");
-            System.out.println("1. Añadir alguien a la cola");
-            System.out.println("2. Quitar al primero de la cola");
-            System.out.println("3. Quitar a cualquiera en cualquier posicion");
-            System.out.println("4. Mostrar la cola");
+            while (continuar) {
+            menu();
             opcion = in.nextInt();
             in.nextLine();
             switch (opcion) {
@@ -63,7 +60,18 @@ public class Banco {
                         }
                     }
                     break;
+                case 5:
+                    System.out.println("Saliendo...");
+                    continuar = false;
             }
-        } while (opcion != 5) ;
+        } ;
+    }
+    public static void menu () {
+        System.out.println("Elige una de las siguientes opciones");
+        System.out.println("1. Añadir alguien a la cola");
+        System.out.println("2. Quitar al primero de la cola");
+        System.out.println("3. Quitar a cualquiera en cualquier posicion");
+        System.out.println("4. Mostrar la cola");
+        System.out.println("5. Salir");
     }
 }

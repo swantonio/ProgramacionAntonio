@@ -11,15 +11,11 @@ public class Gimnasio {
         String nombre;
         String dni = "";
         int opcion = 0;
+        boolean continuar = true;
         Map<String, Object> usuarios = new HashMap<>();
 
-        do {
-            System.out.println("Elige una de las siguientes opciones");
-            System.out.println("1. Dar usuario de alta");
-            System.out.println("2. Dar usuario de baja");
-            System.out.println("3. Mostrar datos de usuario");
-            System.out.println("4. Modificar usuarios");
-            System.out.println("5. Salir");
+        while (continuar) {
+            menu();
             opcion = in.nextInt();
             in.nextLine();
             switch (opcion) {
@@ -78,8 +74,17 @@ public class Gimnasio {
                 break;
             case 5:
                 System.out.println("Saliendo...");
+                continuar = false;
                 break;
         }
-        } while (opcion != 5);
+        }
+    }
+    public static void menu () {
+        System.out.println("Elige una de las siguientes opciones");
+        System.out.println("1. Dar usuario de alta");
+        System.out.println("2. Dar usuario de baja");
+        System.out.println("3. Mostrar datos de usuario");
+        System.out.println("4. Modificar usuarios");
+        System.out.println("5. Salir");
     }
 }
