@@ -1,4 +1,4 @@
-package Tema5;
+package Tema5.ActividadesColecciones1;
 
 import java.util.ArrayList;
 import java.util.Scanner;

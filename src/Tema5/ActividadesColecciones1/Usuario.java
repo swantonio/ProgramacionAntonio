@@ -1,6 +1,4 @@
-package Tema5;
-
-import Tema4.POO2.Cuenta;
+package Tema5.ActividadesColecciones1;
 
 public class Usuario {
     private String nombre;
