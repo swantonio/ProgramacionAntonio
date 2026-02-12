@@ -1,6 +1,5 @@
-package Tema5.ActividadesColecciones2;
+package Tema5.ActividadesExcepciones;
 
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
