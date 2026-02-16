@@ -57,13 +57,14 @@ public class Persona {
             this.edad = edadDefault;
         }
     }
-    public String isAdult(int edad) {
+
+    /*public boolean isAdult(int edad) {
         if (edad <= adultAge) {
             return nombre + " es mayor de edad";
         } else {
             return nombre + " es menor de edad";
         }
-    }
+    }*/
     public String isRetired(int edad) {
         if (edad > retiredAge ) {
             return nombre + " esta jubilado";
@@ -71,7 +72,7 @@ public class Persona {
             return nombre + " no esta jubilado";
         }
     }
-    public String ageDifference(Persona persona) {
+    /*public int ageDifference(Persona persona) {
         if (this.edad == persona.edad) {
             return this.nombre + " y " + persona.nombre +
                     " tienen la misma edad";
@@ -86,7 +87,7 @@ public class Persona {
             return persona.nombre + " es mayor que " + this.nombre +
                     " por " + diferencia + " años";
         }
-    }
+    }*/
     public void print () {
         System.out.println("Nombre:" + nombre + " Apellido:" + apellido + " Edad:" + edad + " Dni:" + dni);
     }

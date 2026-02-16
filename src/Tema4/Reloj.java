@@ -1,7 +1,7 @@
 package Tema4;
 
 public class Reloj {
-    public int Hora;
+    public int hora;
     public int Minutos;
     public int Segundos;
     boolean formato24;

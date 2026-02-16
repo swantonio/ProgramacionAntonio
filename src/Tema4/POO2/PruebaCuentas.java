@@ -4,10 +4,15 @@ import java.util.Scanner;
 
 public class PruebaCuentas {
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         Persona[] listaPersonas = new Persona[10];
         int totalPersonas = 0;
         int opcion;
+        String dni;
+        String nom;
+        String ape;
         do {
+
          System.out.println("Introduce una de las opciones");
          System.out.println("1. Instanciar objetos de tipo Persona");
          System.out.println("2. Instanciar objetos de tipo Cuenta y asociarlo a una persona.");
@@ -17,17 +22,18 @@ public class PruebaCuentas {
          System.out.println("6. Realizar transferencia entre cuentas.");
          System.out.println("7. Imprimir las personas morosas.");
          System.out.println("8. Si quieres salir");
-         Scanner in = new Scanner(System.in);
          opcion = in.nextInt();
          in.nextLine();
             switch (opcion) {
              case 1:
                  if (totalPersonas < listaPersonas.length) {
-                     System.out.print("DNI: "); String dni = in.nextLine();
-                     System.out.print("Nombre: "); String nom = in.nextLine();
-                     System.out.print("Apellido: "); String ape = in.nextLine();
+                     System.out.print("DNI: ");
+                     dni = in.nextLine();
+                     System.out.print("Nombre: "); nom = in.nextLine();
+                     System.out.print("Apellido: "); ape = in.nextLine();
 
-                     listaPersonas[totalPersonas] = new Persona();
+                     listaPersonas[totalPersonas] = new Persona(dni, nom, ape);
+                     Persona p1 = new Persona(dni, nom, ape);
                      listaPersonas[totalPersonas].crearPersona(dni, nom, ape);
                      totalPersonas++;
                      System.out.println("Registrado.");
@@ -35,7 +41,7 @@ public class PruebaCuentas {
                  break;
              case 2:
                  System.out.print("DNI del titular: ");
-                 String dni = in.nextLine();
+                 dni = in.nextLine();
                  int posicion = -1;
                  for (int i = 0; i < totalPersonas; i++) {
                      if (listaPersonas[i].getDni().equalsIgnoreCase(dni)) {
@@ -132,4 +138,5 @@ public class PruebaCuentas {
          }
      }  while (opcion != 8) ;
     }
-}
+    }
+

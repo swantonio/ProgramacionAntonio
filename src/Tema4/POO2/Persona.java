@@ -7,7 +7,7 @@ public class Persona {
     private String apellido;
     private int numCuentas;
 
-    public Persona() {
+    public Persona(String dni, String nom, String ape) {
         this.dni = "Hola";
         this.cuentasBancarias = new Cuenta[3];
         this.nombre = "Paco";
@@ -22,6 +22,7 @@ public class Persona {
         this.apellido = apellido;
         this.numCuentas = numCuentas;
     }
+
 
     public Cuenta[] getCuentasBancarias() {
         return cuentasBancarias;
@@ -71,7 +72,7 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public boolean añadirCuenta(String numCuenta, double saldoInicial) {
+    public boolean anyadirCuenta(String numCuenta, double saldoInicial) {
         if (numCuentas < 3) {
             cuentasBancarias[numCuentas] =
                     new Cuenta(numCuenta, saldoInicial);
@@ -80,12 +81,14 @@ public class Persona {
         }
         return false;
     }
+
     public void recibirNomina(String numCuenta, double cantidad) {
         int pos = buscarCuenta(numCuenta);
         if (pos != -1) {
             cuentasBancarias[pos].recibirAbonos(cantidad);
         }
     }
+
     public void pagarRecibo(String numCuenta, double cantidad) {
         int pos = buscarCuenta(numCuenta);
         if (pos != -1) {
@@ -103,14 +106,17 @@ public class Persona {
                             cantidad);
         }
     }
+
     public boolean esMorosa() {
+        boolean moroso= false;
         for (int i = 0; i < numCuentas; i++) {
             if (cuentasBancarias[i].getSaldoDisponible() < 0) {
-                return true;
+                moroso= true;
             }
         }
-        return false;
+        return moroso;
     }
+
     public void print() {
         System.out.println(nombre + " " + apellido + " | DNI: " + dni);
         for (int i = 0; i < numCuentas; i++) {
@@ -120,6 +126,7 @@ public class Persona {
             );
         }
     }
+
     private int buscarCuenta(String numeroCuenta) {
         for (int i = 0; i < numCuentas; i++) {
             if (cuentasBancarias[i].getNumeroDeCuenta()
@@ -129,5 +136,8 @@ public class Persona {
         }
         return -1;
     }
+
+    public void añadirCuenta(String n, double s) {
     }
+}
 

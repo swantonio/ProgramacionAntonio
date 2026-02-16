@@ -14,17 +14,20 @@ public class Cuenta {
         this.saldoDisponible = saldoDisponible;
     }
 
+
     public void recibirAbonos(double extra) {
         if (extra > 0) {
             this.saldoDisponible = this.saldoDisponible + extra;
             System.out.println("Tu saldo es: " + this.saldoDisponible);
         }
     }
+
     public void pagarRecibos (double pago) {
      if (this.saldoDisponible >= pago) {
          this.saldoDisponible = this.saldoDisponible - pago;
      }
     }
+
     public void transferir(Cuenta destino, double cantidad) {
         if (cantidad > 0) {
             this.pagarRecibos(cantidad);
