@@ -12,7 +12,7 @@ public class Gimnasio {
         String dni = "";
         int opcion = 0;
         boolean continuar = true;
-        Map<String, Object> usuarios = new HashMap<>();
+        Map<String, Usuario> usuarios = new HashMap<>();
 
         while (continuar) {
             menu();

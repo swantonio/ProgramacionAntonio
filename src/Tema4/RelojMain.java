@@ -1,4 +1,4 @@
-package Tema4;
+/*package Tema4;
 
 public class RelojMain {
     public static void main(String[] args) {
@@ -10,3 +10,4 @@ public class RelojMain {
         System.out.println(reloj);
     }
 }
+*/

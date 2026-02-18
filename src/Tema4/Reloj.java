@@ -1,4 +1,4 @@
-package Tema4;
+/*package Tema4;
 
 public class Reloj {
     public int hora;
@@ -93,3 +93,4 @@ public class Reloj {
         }
     }
 }
+*/

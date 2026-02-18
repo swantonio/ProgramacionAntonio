@@ -11,7 +11,7 @@ public class Banco {
         String dni = "";
         int opcion = 0;
         boolean continuar = true;
-        ArrayList<Object> cola = new ArrayList<>();
+        ArrayList<Usuario> cola = new ArrayList<>();
 
             while (continuar) {
             menu();
@@ -31,7 +31,8 @@ public class Banco {
                     break;
                 case 2:
                     if (!cola.isEmpty()) {
-                        Usuario atendido = (Usuario) cola.get(0);
+                        //Usuario atendido = (Usuario) cola.get(0);
+                        Usuario atendido = cola.get(0);
                         System.out.println("Atendiendo al primero de la cola");
                         System.out.println(atendido.getNombre()+ " se ha ido");
                         cola.remove(0);
@@ -43,7 +44,7 @@ public class Banco {
                     System.out.println("Introduce el nombre de quien se va:");
                     String eliminado = in.nextLine();
                     for (int i = 0; i < cola.size(); i++) {
-                        Usuario usuario = (Usuario) cola.get(i);
+                        Usuario usuario = cola.get(i);
                         if (usuario.getNombre().equalsIgnoreCase(eliminado)) {
                             cola.remove(i);
                             System.out.println(eliminado + " ha sido eliminado de la cola.");
@@ -55,7 +56,7 @@ public class Banco {
                     if (cola.isEmpty()) {
                         System.out.println("La cola está vacía.");
                     } else {
-                        for (Object persona : cola) {
+                        for (Usuario persona : cola) {
                             System.out.println(persona);
                         }
                     }

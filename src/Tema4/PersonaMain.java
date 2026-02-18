@@ -1,4 +1,4 @@
-package Tema4;
+/* package Tema4;
 
 import java.util.Scanner;
 
@@ -41,3 +41,5 @@ public class PersonaMain {
         System.out.println(persona1.ageDifference(persona2));
     }
 }
+
+ */
