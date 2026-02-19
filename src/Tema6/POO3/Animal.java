@@ -1,6 +1,6 @@
 package Tema6.POO3;
 
-public class Animal {
+public abstract class Animal {
     protected String nombre;
     protected int edad;
     protected String raza;
@@ -29,9 +29,7 @@ public class Animal {
         System.out.println(nombre + " esta durmiendo");
     }
 
-    public void hacerRuido () {
-        System.out.println(nombre + " hacer ruido");
-    }
+    public abstract void hacerRuido ();
 
     public String getNombre() {
         return nombre;
