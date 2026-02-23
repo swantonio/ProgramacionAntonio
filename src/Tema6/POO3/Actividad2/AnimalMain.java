@@ -1,4 +1,4 @@
-package Tema6.POO3;
+package Tema6.POO3.Actividad2;
 
 public class AnimalMain {
     public static void main(String[] args) {

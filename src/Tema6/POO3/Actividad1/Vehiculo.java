@@ -1,4 +1,4 @@
-package Tema6.POO3;
+package Tema6.POO3.Actividad1;
 
 public class Vehiculo {
         protected String marca;

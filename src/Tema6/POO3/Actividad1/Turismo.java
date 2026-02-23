@@ -1,4 +1,4 @@
-package Tema6.POO3;
+package Tema6.POO3.Actividad1;
 enum tipoTurismo {
     PROFESIONAL,PARTICULAR
 }

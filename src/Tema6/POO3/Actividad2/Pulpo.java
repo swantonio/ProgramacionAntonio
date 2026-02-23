@@ -1,4 +1,4 @@
-package Tema6.POO3;
+package Tema6.POO3.Actividad2;
 
 public class Pulpo extends Animal {
     // Atributos

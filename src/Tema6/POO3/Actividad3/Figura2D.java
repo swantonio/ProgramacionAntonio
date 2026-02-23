@@ -1,4 +1,4 @@
-package Tema6.POO3;
+package Tema6.POO3.Actividad3;
 
 public abstract class Figura2D {
     // Atributos

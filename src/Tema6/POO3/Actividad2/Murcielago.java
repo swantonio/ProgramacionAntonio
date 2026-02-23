@@ -1,4 +1,4 @@
-package Tema6.POO3;
+package Tema6.POO3.Actividad2;
 
 public class Murcielago extends Animal {
     // Atributos

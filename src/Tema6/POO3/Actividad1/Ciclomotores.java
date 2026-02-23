@@ -1,6 +1,6 @@
-package Tema6.POO3;
+package Tema6.POO3.Actividad1;
 
-public class Ciclomotores extends Vehiculo{
+public class Ciclomotores extends Vehiculo {
     private int cilindrada;
 
     private final int CILINDRADA_DEFAULT = 125;
