@@ -19,12 +19,12 @@ public class Cuadrado extends Figura2D {
 
     @Override
     public double perimetro() {
-        return lado * lado;
+        return lado * 4;
     }
 
     @Override
     public double area() {
-        return (lado * lado) * 2;
+        return lado * lado;
     }
 
     // Setters y Getters
