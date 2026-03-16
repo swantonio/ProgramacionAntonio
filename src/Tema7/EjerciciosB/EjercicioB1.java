@@ -1,0 +1,44 @@
+package Tema7.EjerciciosB;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Stream;
+
+public class EjercicioB1 {
+    public static void main(String[] args) throws IOException {
+        String fileName = "/home/antdelmor2/IdeaProjects/ProgramacionAntonio/src/Tema7/Documentos/numeros.txt";
+
+        //BufferedReader
+        try {
+            try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                String line;
+                int min = 99999999;
+                int max = 0;
+
+                while ((line = br.readLine()) != null) {
+                   if(Integer.parseInt(line) > max ){
+                       max = Integer.parseInt(line);
+                   }
+                   if (Integer.parseInt(line) < min){
+                       min = Integer.parseInt(line);
+                   }
+                }
+                System.out.println(max);
+                System.out.println(min);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
