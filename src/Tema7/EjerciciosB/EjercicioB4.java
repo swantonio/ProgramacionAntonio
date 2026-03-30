@@ -17,11 +17,11 @@ public class EjercicioB4 {
             List<String> nombres = Files.readAllLines(Paths.get("/home/antdelmor2/IdeaProjects/ProgramacionAntonio/src/Tema7/Documentos/usa_nombres.txt"));
             List<String> apellidos = Files.readAllLines(Paths.get("/home/antdelmor2/IdeaProjects/ProgramacionAntonio/src/Tema7/Documentos/usa_apellidos.txt"));
 
-            System.out.print("¿Cuántos nombres deseas generar?: ");
+            System.out.print("Cuántos nombres deseas generar?: ");
             int cantidad = sc.nextInt();
             sc.nextLine();
 
-            System.out.print("¿A qué archivo deseas añadirlos? (ej: usa_personas.txt): ");
+            System.out.print("Qué archivo deseas añadirlos? (ej: usa_personas.txt): ");
             String nombreArchivoDestino = sc.nextLine();
 
             StringBuilder contenido = new StringBuilder();
