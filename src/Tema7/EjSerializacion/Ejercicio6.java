@@ -1,48 +1,52 @@
 package Tema7.EjSerializacion;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Ejercicio6 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String nonbre = "";
-        int edad;
-        ArrayList<Objects> Personas = new ArrayList<>();
-        boolean bucle = false;
-        int opcion;
-        while (bucle != true) {
-            System.out.println("Pulsa 1 si quieres añadir un objeto persona y 2 para salir");
-            opcion = in.nextInt();
+        ArrayList<Persona> listaPersonas = new ArrayList<>();
+        boolean salir = false;
+
+        while (!salir) {
+            System.out.println("\nDime que quieres hacer: \n1. Añadir persona\n2. Guardar y salir");
+            int opcion = in.nextInt();
+            in.nextLine();
+
             switch (opcion) {
                 case 1:
-                    System.out.println("Introduce el nombre de la persona");
-                    nonbre = in.nextLine();
-                    System.out.println("Introduce la edad de la persona");
-                    edad = in.nextInt();
-                    Persona Antonio = new Persona(nonbre, edad);
-                    try (FileOutputStream fos = new FileOutputStream("persona.dat");
-                         ObjectOutputStream salida = new ObjectOutputStream(fos)) {
-                        salida.writeObject(Antonio);
-                        System.out.println("Objeto serializado");
-                    } catch (FileNotFoundException e) {
-                        throw new RuntimeException(e);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    System.out.print("Nombre: ");
+                    String nombre = in.nextLine();
+                    System.out.print("Edad: ");
+                    int edad = in.nextInt();
+                    listaPersonas.add(new Persona(nombre, edad));
+                    System.out.println("Añadido a la lista.");
                     break;
                 case 2:
-                    System.out.println("Saliendo...");
-                    bucle = true;
+                    salir = true;
                     break;
                 default:
-                    System.out.println("ahah");
+                    System.out.println("Opción no válida.");
             }
+        }
+        File archivo = new File("personas.dat");
+        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream(archivo))) {
+            salida.writeObject(listaPersonas);
+            System.out.println("\nLista guardada con éxito en personas.dat");
+        } catch (IOException e) {
+            System.err.println("Error al guardar: " + e.getMessage());
+        }
+
+        System.out.println("\nLeyendo del archivo para comprobar...");
+        try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(archivo))) {
+            ArrayList<Persona> listaLeida = (ArrayList<Persona>) entrada.readObject();
+            for (Persona p : listaLeida) {
+                System.out.println("Recuperado: " + p.getNombre() + " (" + p.getEdad() + " años)");
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error al leer: " + e.getMessage());
         }
     }
 }
