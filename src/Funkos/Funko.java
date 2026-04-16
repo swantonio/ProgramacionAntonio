@@ -84,13 +84,12 @@ public class Funko implements Serializable {
 
     @Override
     public String toString() {
-        return "Funko{" +
-                "idfunko=" + idfunko +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", model=" + options +
-                ", year=" + year +
-                '}';
+        return "Funko: " +
+                "Idfunko = " + idfunko +
+                " Nombre = " + name  +
+                " Precio = " + price +
+                " Modelo = " + options +
+                " Año = " + year;
     }
 }
 
