@@ -163,39 +163,24 @@ public class VideojuegoMain {
         }
     }
     public static void saveToCSV(ArrayList<Videojuego> listaVideojuegos) {
-        if (listaVideojuegos.isEmpty()) {
-            System.out.println("No hay datos para exportar a CSV.");
-        } else {
-            try (PrintWriter pw = new PrintWriter(new FileWriter("RankingVideojuegos.csv"))) {
-
-                pw.println("Título;Plataforma;Nota;Tipo;Detalle");
-
-                for (Videojuego videojuego : listaVideojuegos) {
-                    String tipo = "";
-                    String detalleExtra = "";
-
-                    if (videojuego instanceof VideojuegoFisico) {
-                        tipo = "Físico";
-                        detalleExtra = "Tienda: " + ((VideojuegoFisico) videojuego).getShopBought();
-                    } else if (videojuego instanceof VideojuegoDigital) {
-                        tipo = "Digital";
-                        detalleExtra = "Tamaño: " + ((VideojuegoDigital) videojuego).getgB() + "GB";
-                    }
-
-                    pw.println(videojuego.getTittle() + ";" +
-                            videojuego.getPlatform() + ";" +
-                            videojuego.getNote() + ";" +
-                            tipo + ";" +
-                            detalleExtra);
+        try (PrintWriter pw = new PrintWriter(new FileWriter("Videojuegos.csv"))) {
+            pw.println("Titulo,Plataforma,Nota,Tipo,Extra");
+            for (Videojuego v : listaVideojuegos) {
+                String linea = v.getTittle() + "," + v.getPlatform() + "," + v.getNote();
+                if (v instanceof VideojuegoFisico) {
+                    linea += ",Fisico," + ((VideojuegoFisico) v).getShopBought();
+                } else if (v instanceof VideojuegoDigital) {
+                    linea += ",Digital," + ((VideojuegoDigital) v).getgB() + "GB";
                 }
-
-                System.out.println("Ranking exportado correctamente a 'RankingVideojuegos.csv' (Compatible con Excel)");
-
-            } catch (IOException e) {
-                System.err.println("Error al crear el archivo CSV: " + e.getMessage());
+                pw.println(linea);
             }
+            System.out.println("Archivo CSV generado con éxito.");
+
+        } catch (IOException e) {
+            System.err.println("Error al exportar CSV: " + e.getMessage());
         }
     }
+
     public static void menu () {
         System.out.println("Elige la opcion que quieras.");
         System.out.println("1.Añadir videojuego (fisico o digital).");
